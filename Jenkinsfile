@@ -31,8 +31,6 @@ pipeline{
         
         stage("Stage 5 : Clean Unwanted Docker Images"){
             steps{
-                // sh "docker ps -a -q | xargs docker stop | xargs docker rm"
-                // sh "docker rm -f ${docker ps -a -q}"
                 sh "docker container prune -f"
                 sh "docker image prune -a -f"
             }
