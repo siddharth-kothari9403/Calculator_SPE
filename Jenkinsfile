@@ -38,7 +38,7 @@ pipeline{
         
         stage('Stage 5 : Ansible Deployment') {
             steps {
-                sh 'ansible-playbook -i inventory Deploy-Calculator.yml'
+                sh 'set -e; ansible-playbook -i inventory Deploy-Calculator.yml'
             }
         }
     }
