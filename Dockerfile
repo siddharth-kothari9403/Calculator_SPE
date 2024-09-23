@@ -1,4 +1,4 @@
-FROM openjdk:20
+FROM openjdk:17
 
 COPY ./target/Calculator_SPE-1.0-SNAPSHOT.jar ./
 
