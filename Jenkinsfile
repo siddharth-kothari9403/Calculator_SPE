@@ -41,6 +41,5 @@ pipeline{
                 sh 'ansible-playbook -i inventory Deploy-Calculator.yml'
             }
         }
-        
     }
 }
