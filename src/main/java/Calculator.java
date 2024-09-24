@@ -19,27 +19,34 @@ public class Calculator {
             System.out.println("4. Power of a Number");
             System.out.println("5. Exit Menu");
             System.out.println("Enter your choice:");
-            ch = sc.nextInt();
+            String s = sc.nextLine();
+            ch = Integer.parseInt(s);
             System.out.println("--------------------------------------------------");
             if (ch == 1){
                 System.out.println("Enter Positive Real Number for Square Root");
-                Double d = sc.nextDouble();
+                s = sc.nextLine();
+                Double d = Double.parseDouble(s);
                 Double res = calculatorService.sqrt(d);
                 System.out.println(res);
             }else if (ch == 2){
                 System.out.println("Enter Positive Integer for Factorial");
-                Integer n = sc.nextInt();
+                s = sc.nextLine();
+                Integer n = Integer.parseInt(s);
                 Integer res = calculatorService.factorial(n);
                 System.out.println(res);
             }else if (ch == 3){
                 System.out.println("Enter Positive Real Number for Logarithm");
-                Double d = sc.nextDouble();
+                s = sc.nextLine();
+                Double d = Double.parseDouble(s);
                 Double res = calculatorService.logarithm(d);
                 System.out.println(res);
             }else if (ch == 4){
-                System.out.println("Enter Base and Exponent");
-                Double base = sc.nextDouble();
-                Double exp = sc.nextDouble();
+                System.out.println("Enter Base: ");
+                s = sc.nextLine();
+                Double base = Double.parseDouble(s);
+                System.out.println("Enter Exponent: ");
+                s = sc.nextLine();
+                Double exp = Double.parseDouble(s);
                 Double res = calculatorService.power(base, exp);
                 System.out.println(res);
             }else if (ch == 5){
@@ -49,7 +56,5 @@ public class Calculator {
                 System.out.println("Invalid Choice");
             }
         }
-
-        sc.close();
     }
 }
