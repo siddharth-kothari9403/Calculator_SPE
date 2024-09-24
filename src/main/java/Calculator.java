@@ -56,5 +56,7 @@ public class Calculator {
                 System.out.println("Invalid Choice");
             }
         }
+
+        sc.close();
     }
 }
