@@ -1,7 +1,6 @@
 pipeline{
     environment{
-        // DOCKERHUB_CRED = credentials("Dockerhub-Credentials-ID")
-        DOCKER_IMAGE_NAME = 'calculator'
+        DOCKERHUB_CRED = credentials("Dockerhub-Credentials-ID")
         GITHUB_REPO_URL = 'https://github.com/siddharth-kothari9403/Calculator_SPE.git'
     }
     agent any
@@ -23,29 +22,23 @@ pipeline{
         
         stage("Stage 3 : Build Docker Image"){
             steps{
-                script {
-                    docker.build("${DOCKER_IMAGE_NAME}", '.')
-                }
+                sh "docker build -t siddharthkothari9403/calculator:latest ."
             }
         }
         
         stage("Stage 4 : Push Docker Image to Dockerhub"){
             steps{
-                script{
-                        docker.withRegistry('', 'Dockerhub-Credentials-ID') {
-                        sh 'docker tag calculator siddharthkothari9403/calculator:latest'
-                        sh 'docker push siddharthkothari9403/calculator'
-                    }
-                }
+                sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
+                sh "docker push siddharthkothari9403/calculator:latest"
             }
         }
         
-        // stage("Stage 5 : Clean Unwanted Docker Images"){
-        //     steps{
-        //         sh "docker container prune -f"
-        //         sh "docker image prune -a -f"
-        //     }
-        // }
+        stage("Stage 5 : Clean Unwanted Docker Images"){
+            steps{
+                sh "docker container prune -f"
+                sh "docker image prune -a -f"
+            }
+        }
         
         stage('Stage 6 : Ansible Deployment') {
             steps {
