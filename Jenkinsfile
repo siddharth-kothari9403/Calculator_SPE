@@ -29,16 +29,16 @@ pipeline{
             }
         }
         
-        // stage("Stage 4 : Push Docker Image to Dockerhub"){
-        //     steps{
-        //         script{
-        //                 docker.withRegistry('', 'Dockerhub-Credentials-ID') {
-        //                 sh 'docker tag calculator siddharthkothari9403/calculator:latest'
-        //                 sh 'docker push siddharthkothari9403/calculator'
-        //             }
-        //         }
-        //     }
-        // }
+        stage("Stage 4 : Push Docker Image to Dockerhub"){
+            steps{
+                script{
+                        docker.withRegistry('', 'Dockerhub-Credentials-ID') {
+                        sh 'docker tag calculator siddharthkothari9403/calculator:latest'
+                        sh 'docker push siddharthkothari9403/calculator'
+                    }
+                }
+            }
+        }
         
         // stage("Stage 5 : Clean Unwanted Docker Images"){
         //     steps{
