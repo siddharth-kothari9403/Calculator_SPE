@@ -8,4 +8,4 @@
       shell: docker pull siddharthkothari9403/calculator:latest
 
     - name: Run the container
-      shell: docker create -it --name Calculator siddharthkothari9403/calculator
+      shell: docker run -it -d --name calculator siddharthkothari9403/calculator
