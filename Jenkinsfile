@@ -33,6 +33,7 @@ pipeline{
         
         stage('Stage 6 : Ansible Deployment') {
             steps {
+                sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
                 sh 'ansible-playbook -i inventory Deploy-Calculator.yml'
             }
         }

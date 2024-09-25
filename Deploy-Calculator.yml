@@ -3,9 +3,7 @@
   hosts: all
 
   tasks:
-    - name: Start
-      shell: echo "Pulling IMage from dockerhub"
-      
+  
     - name: Pull Image
       shell: docker pull siddharthkothari9403/calculator:latest
 
