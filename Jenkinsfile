@@ -40,12 +40,12 @@ pipeline{
             }
         }
         
-        stage("Stage 5 : Clean Unwanted Docker Images"){
-            steps{
-                sh "docker container prune -f"
-                sh "docker image prune -a -f"
-            }
-        }
+        // stage("Stage 5 : Clean Unwanted Docker Images"){
+        //     steps{
+        //         sh "docker container prune -f"
+        //         sh "docker image prune -a -f"
+        //     }
+        // }
         
         stage('Stage 6 : Ansible Deployment') {
             steps {
